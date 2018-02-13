@@ -1,0 +1,6 @@
+include ./index.pug
+form(method="POST", action="/addtodo")
+    div
+        label(for="list") Enter the list:
+        input(type="text", name="list", placeholder="todo")
+    button(type="submit") Submit

@@ -1,9 +1,12 @@
-doctype html
-html
-    head
-        title="MongoDB"
-        style 
-            include ./style.css
-    body
-        h1 Witaj
-        h3 Witaj #{name}!
+include ./index.pug
+    div
+        table
+            thead
+                th To do list
+            tbody
+                for todo in data
+                    tr
+                        td #{todo.list}
+                        td
+                       
+                           
