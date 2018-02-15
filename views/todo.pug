@@ -1,12 +1,6 @@
 include ./index.pug
     div
-        table
-            thead
-                th To do list
-            tbody
-                for todo in data
-                    tr
-                        td #{todo.list}
-                        td
-                       
+        h3 To do list
+            for task in data 
+                 #{todo.task}
                            

@@ -5,12 +5,9 @@ html
         style 
             include ./style.css
     body
+        form(action = "/addtask", method = "POST")
         h1 Welcome 
-        a(href='todo') To do list
-        a(href='add-todo') Add to do
-        //- h2 Enter Your Name
-        //- p
-        //-     | Your Name: 
-        //-     input(type='text', name='first_name')
-
-        //- input(type='submit', value='Submit', href='todo')
+        div
+            label(for = "task") Task:
+            input(task = "task")
+        button(type='submit') Create new task
