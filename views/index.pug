@@ -1,0 +1,17 @@
+doctype html
+html
+    head
+        title="MongoDB"
+        style 
+            include ./style.css
+    body
+        div
+            h1 Welcome 
+            form(method="POST", action="/addtask")
+                div
+                    label(for="task") Enter the new task:
+                    input(type="text", name="task", placeholder="task")
+                button(type="submit") Submit 
+
+
+        

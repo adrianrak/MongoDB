@@ -1,0 +1,7 @@
+include ./index.pug
+div
+    h3 To do list
+    for todo in data
+        li #{todo.task}
+            button(href="/todo/#{todo._id}/delete") X
+                           

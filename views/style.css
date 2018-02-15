@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #959891;
+}
+
+.header {
+    background-image: url('https://images.pexels.com/photos/776526/pexels-photo-776526.jpeg?w=940&h=650&auto=compress&cs=tinysrgb');
+    background-repeat: round;
+    height: 385px;
+    width: 100%;
+}
+h1 {
+    color: #FFFFFF;
+    margin: 0;
+    padding-top: 30px;
+    text-align: center;
+}
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+h3 {
+    text-align: center;
+}
