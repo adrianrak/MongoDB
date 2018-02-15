@@ -28,6 +28,7 @@ const Todo = mongoose.model('Todo', todoSchema);
 app.get('/', function(req, res) {
     res.render('index');
 });
+
 app.get('/todo', function (req, res) {
     Todo.find()
         .then(function(todo) {
@@ -37,35 +38,49 @@ app.get('/todo', function (req, res) {
             console.log(err);
         });
 });
-app.post('/addtask', function (req, res) {;
+
+app.post('/addtask', function (req, res) {
     let newTodo = new Todo (req.body);
     newTodo.save()
         .then(function() {
             res.redirect('todo');
         })
         .catch(function(err) {
-            console.log(err.message);
+            console.log(err);
         });
 });
-// app.post('/addtask', function(req, res){
-//     let todoInfo = req.body;
-//     let newTodo = new Todo({
-//         task: todoInfo.task
-//     });
-//     newTodo.save()
-//         .then(function() {
-//             res.redirect('todo');
-//         })
-//         .catch(function(err) {
-//             console.log(err)
+app.get('/todo/:id/delete', function(req, res){
+	Todo.findByIdAndRemove({_id: req.params.id}, 
+	   function(err, docs){
+		if(err) res.json(err);
+		else    res.redirect('/todo');
+	});
+});
+
+// app.get('/remove/:id', function(req, res){
+//     var id = req.params.id;
+
+//     Todo.findByIdAndRemove(id, function(err, todo){
+//         if(err) res.render('error', { error: 'Error deleting todo'});
+//         res.redirect('/todo');
 //     });
 // });
 
 
-// app.get('/todo', function(req, res) {
-//     res.render('todo');
-// });
-
+// app.get('/delete/:id', function(req, res){
+//     Todo.findOneAndRemove({'_id': req.params.id}) 
+//     .then(function(user) {
+//         return user.delete(function() {
+//             console.log('User successfully deleted');
+//         });
+//     })
+//     .then(function() {
+//         res.redirect('/todo');
+//     })
+//     .catch(function(err) {
+//         console.log(err.message);
+//     });
+//  });
 
 
 let server = app.listen(app.get('port'), function() {
