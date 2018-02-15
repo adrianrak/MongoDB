@@ -1,6 +1,7 @@
 include ./index.pug
-    div
-        h3 To do list
-            for task in data 
-                 #{todo.task}
+div
+    for task in data
+        ul
+            li #{todo.task}
+            li
                            

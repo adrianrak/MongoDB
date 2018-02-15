@@ -38,7 +38,7 @@ app.get('/todo', function (req, res) {
         });
 });
 app.post('/addtask', function (req, res) {;
-    var newTodo = new Todo (req.body);
+    let newTodo = new Todo (req.body);
     newTodo.save()
         .then(function() {
             res.redirect('todo');
@@ -62,9 +62,9 @@ app.post('/addtask', function (req, res) {;
 // });
 
 
-app.get('/todo', function(req, res) {
-    res.render('todo');
-});
+// app.get('/todo', function(req, res) {
+//     res.render('todo');
+// });
 
 
 
