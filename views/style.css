@@ -25,3 +25,23 @@ form {
 h3 {
     text-align: center;
 }
+.todo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.todoList {
+    margin: 10px;
+    list-style: none;
+    width: 350px;
+    height: 40px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 10px;
+    padding-right: 10px;
+    padding-left: 50px;
+}

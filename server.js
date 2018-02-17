@@ -19,17 +19,16 @@ mongoose.connect('mongodb://adrrak:chopin@ds233238.mlab.com:33238/database-1');
 // });
 
 const todoSchema = new Schema({
-    //username: { type: String, required: true},
     task: { type: String, required: true }
 });
 
 const Todo = mongoose.model('Todo', todoSchema);
 
-app.get('/', function(req, res) {
-    res.render('index');
-});
+// app.get('/', function(req, res) {
+//     res.render('todo');
+// });
 
-app.get('/todo', function (req, res) {
+app.get('/', function (req, res) {
     Todo.find()
         .then(function(todo) {
             res.render('todo', {data: todo});
@@ -43,45 +42,21 @@ app.post('/addtask', function (req, res) {
     let newTodo = new Todo (req.body);
     newTodo.save()
         .then(function() {
-            res.redirect('todo');
+            res.redirect('/');
         })
         .catch(function(err) {
             console.log(err);
         });
 });
-app.get('/todo/:id/delete', function(req, res){
+app.get('/todo/delete/:id', function(req, res){
 	Todo.findByIdAndRemove({_id: req.params.id}, 
 	   function(err, docs){
-		if(err) res.json(err);
-		else    res.redirect('/todo');
+		if(err) {
+            return res.json(err);
+        }
+        return res.redirect('/');
 	});
 });
-
-// app.get('/remove/:id', function(req, res){
-//     var id = req.params.id;
-
-//     Todo.findByIdAndRemove(id, function(err, todo){
-//         if(err) res.render('error', { error: 'Error deleting todo'});
-//         res.redirect('/todo');
-//     });
-// });
-
-
-// app.get('/delete/:id', function(req, res){
-//     Todo.findOneAndRemove({'_id': req.params.id}) 
-//     .then(function(user) {
-//         return user.delete(function() {
-//             console.log('User successfully deleted');
-//         });
-//     })
-//     .then(function() {
-//         res.redirect('/todo');
-//     })
-//     .catch(function(err) {
-//         console.log(err.message);
-//     });
-//  });
-
 
 let server = app.listen(app.get('port'), function() {
     console.log('Node app is running on port ', app.get('port'));

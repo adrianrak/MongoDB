@@ -1,7 +1,8 @@
 include ./index.pug
 div
-    h3 To do list
+    h3.text-center To do list
     for todo in data
-        li #{todo.task}
-            button(href="/todo/#{todo._id}/delete") X
-                           
+        div.todo
+            li(class="bg-warning text-center todoList") #{todo.task}
+                a(class="btn btn-danger btn-xs", href="/todo/delete/" + todo._id) X
+                        
